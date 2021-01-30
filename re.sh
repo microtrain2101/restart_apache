@@ -44,6 +44,13 @@ do
   fi
 done
 
+# We could not match the first argument to a virtual-host preset the user with an error
+if [ $FILEMATCH  == false ]
+then
+    echo "ERROR: ${CONFIG} is NOT a valid virtual-host. Please choose from the following ${VALID_VHOSTS} $VHOST"
+    exit 1
+fi
+
 # reload is allowed
 if [ "$COMMAND" == "reload" ] || [ "$COMMAND" == "restart" ]
 then
